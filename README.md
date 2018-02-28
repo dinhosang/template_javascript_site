@@ -245,5 +245,31 @@ __Recap__
 
 So far we have:
   * Built our basic file structure
+    * potentially with temp.txt files in our currently empty folders so that they able to be pushed to GitHub
   * Setup a local git repo
-  * installed ba
+  * installed basic npm modules
+  * setup our npm scripts
+  * setup our webpack config and create our bundle files by running it once
+  * created a basic html template in our index.html file and linked our bundle.js to our html by using <script>
+  * setup our .gitignore
+  * hopefully now git commited a couple times and linked to a GitHub repo!
+  * the above was all performed in the master branch to set it up for developement.
+  * any future steps should occur on a feature branch, which has been branched from a develop branch, which was itself branched from master. Remember good git practise with regards to merging!
+
+------------
+
+## Post structure first steps for the project - i.e. good things to mob program
+
+* Hopefully as a group you have built the above file structure together. While you are grouped up, it may also be useful to write a few common files together.
+* With any of these it is of course up to your group whether you wish to mob program everything in your project, or whether you wish to while mostly pair or solo program, but maybe add a few more features to the mob program list than detailed below. Up to your team.
+* Some of the below also relies on your team having discussed your mvp and perhaps having designed good wireframes detailing what contracts exist between the various parts of your site. Please feel free to check the link below for an example of what I mean if you're interested. You'll find an example wireframe contract of a particular page/view which details the elements, ids, what is part of the html file, and what is dynamic from js, and what the page implies for data and view models and what attributes and methods they should have to allow this page to exist (which is the end goal):
+![image example wireframe contract for a page/view](https://github.com/dinhosang/template_javascript_site/tree/master/imagesForReadme/exampleWireframeContract.png "example wireframe for a page")
+
+* Files to write up as a group:
+  * a __basic__ server.js to listen to the correct port, to access our index.html, and to access our controllers.
+  * perhaps controller files with empty paths for whatever routes you need for an mvp, just so everyone is on the same page about what your site is trying to achieve.
+  * the default html elements which are represented by your viewModels, within which will append more dynamic features to this defaut html element.
+  * a __basic__ app.js file with just an event of the document loading, and an empty callback.
+
+---------------
+* __server.js__
