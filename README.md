@@ -241,4 +241,4 @@ git commit -m "installed npm modules, written .gitignore, and scripted bundle.js
 * If you've not already pushed to a GitHub repo now would also be a good time for that.
 
 -------------
-![Click to go to README_part2](https://github.com/dinhosang/template_javascript_site/README_part2.md)
+![Click to go to README_part2](https://github.com/dinhosang/template_javascript_site/blob/master/README_part2.md)
