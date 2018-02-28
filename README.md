@@ -33,8 +33,7 @@ If you wish the full file structure to be seen by everyone and not just the firs
 
 Example below:
 
-![image of file structure after setup][logo]
-[logo]: https://github.com/dinhosang/template_javascript_site/tree/master/imagesForReadme/afterStructureBuilt.png "example structure"
+![image of file structure after setup](https://github.com/dinhosang/template_javascript_site/tree/master/imagesForReadme/afterStructureBuilt.png "example structure")
 
 ## Git setup
 
