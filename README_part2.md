@@ -110,3 +110,30 @@ So far we have:
   * __Aside over__
 ---------------
 __basic app.js__
+
+  * We have setup a basic server, and linked it to our build files, after which we setup our html file to show its static elements (with ids) and linked in our styles in addition to our earlier script in of our bundle.js
+  * Let's set up our app.js which is responsible for controlling the view our users see when they hit our html page by going to our home route '/'.
+  * Just a basic one. This can be built up as people finish designing view and data models, or used as a testing ground for checking things in the console browser. Or perhaps we fill in our app.js piece by piece only writing a viewModel as we come to it in our process of filling out our app.js. Whatever your group decides lets at least get a basic template going.
+  * In app.js (hopefully located in your /src/ folder)
+  ```js
+    document.addEventListener('DOMContentLoaded', main)
+  ```
+  * Nothing can happen in terms of our dynamic javascript that faces our user, until we know the user has loaded the page. So first we set up an event listener on our page (the document) so that we're prepared to start the ball rolling once someone hits our site.
+  * We've given the eventListener a callback named main, but currently this doesn't exist in our file. Now that we have named it, we need it. So let's write it.
+  * Make sure you have webpack running if you wish to see anything logged out when you hit the homepage, as we are now modifying client side code so we need webpack to be continually bundling what we're writing.
+  ```zh
+    npm run webpack
+  ```
+  * Code to write to app.js
+  ```js
+
+    // new
+    const main = function() {
+      console.log('site loaded');
+    }
+
+    // already written
+    document.addEventListener('DOMContentLoaded', main)
+  ```
+  * Now we have our app.js set up which will manage all the events we want to allow our users to perform. In the earlier wireframe diagram that meant being able to hit the homepage and see a list of countries in the bucket list, and being able to click a submit button to add a country.
+  * Those functionalities could be performed by the viewModels in some fashion, perhaps being given a callback when they are constructed which is then able to send a request when the appropriate event occurs (like the button click)
