@@ -8,7 +8,7 @@
     * [Basic App.js](#basic-app-js)
     * [Empty Route Controllers](#empty-routes)
     * [Recap of Part 2](#recap2)
-    * [Final thoughts](#conclusion)
+    * [Next Steps - Final Thoughts](#conclusion)
 
 <a name='recap1'></a>
 # Recap of Part 1
@@ -260,14 +260,29 @@ As part of the planning the group has hopefully also considered what contracts n
 
 The inner workings don't need to be figured out, just the expected input and output, that is the basic requirement for ensuring you can fit your pieces together.
 
-Don't forget good git practise!
+If you need it it may be helpful to always think of things from the user perspective. Start by thinking what the user needs to see when they hit your site for the first time. How do you know they've hit your site, and how do you present the information they're expecting?
 
-Of course everything detailed here is just one opinion. It's one I've started to form form conversation with and listening to fellow students and our instructors, but an opinion is all it is. I simply hope this is of some use to people, even if just as a stepping stone to something more fully fleshed out.
+If you're mob programming - which of the models and method from your planning do you need to build first to achieve that first step? Then built out from there. Maybe you've built for what they first see, but now what do you want them to be able to do, what events are you listening out for? How do you know they've chosen a particular action, what does that action need to do, and what should that action return to the user? If you have a list of possible actions, pick the one that is most valuable to the user and build that first from start of process to the end, even if it takes you through the app/viewModels/server/controllers/dataModels just follow that process until you've achieved your goal for your user, and then pick the next most important action.
+
+If you're splitting into pairs or solo after having built the basic structure together, then do the same thought process for whatever task you've been assigned, and make sure you're clear on the contracts for that task. Before you start make sure you know with your group from the planning/wireframe contract what form of input your task should expect (if any), what goal your task should achieve (it will have one), and what output does the rest of the project ecosystem expect from it (if any) and how will they access it (what attribute/method name - but only name).
+  * Actually all of that should also be known and kept in mind during mob programming.
+
+The how you achieve that goal of your task is up to you. Talk with your group about ideas for achieving your task when its handed out during one of the days meetings, research online, dig out classnotes and homework, ask colleagues in other groups if you think they may have experience in this topic! Just because we're in our groups doesn't mean people will suddenly start ignoring each other. We're a cohort in this. And hopefully still a cohort in spirit too, even beyond the next few weeks we have left here.
+
+Oh, and don't forget good git practise!
+
+Of course everything detailed here is just one opinion. It's one I've started to form from conversations with, and listening to other opinions from, fellow students and our instructors, but an opinion is all it is. I simply hope this is of some use to people, even if just as a stepping stone to something more fully fleshed out.
 
 If it does lead that way please let the rest of us know your findings too!
 
-Oh, and there is one folder we haven't discussed at all, which is the helper folder. Use this if you find yourself using similar functionality across different classes or files. You could refactor the code to instead of repeating yourself in each file, simply make a helper class which will do the heavy lifting for you in each of those files. It's more a folder for future optimisations than a tool to use in active development. At least for the time frame we're on.
+Oh, and there are a few folders and concepts we haven't discussed at all, one of which is the helper folder. Use this if you find yourself using similar functionality across different classes or files. You could refactor the code to instead of repeating yourself in each file, simply make a helper class which will do the heavy lifting for you in each of those files. It's more a folder for future optimisations than a tool to use in active development. At least for the time frame we're on.
 
-We also didn't touch on testing, but that's because we built no models as part of this basic setup. Don't forget to test them with mocha too! The green ticks are too much fun to ignore.
+We also didn't touch on testing, but that's because we built no models as part of this basic setup. When you do build them don't forget about mocha! The green ticks are too much fun to ignore.
+
+And finally database connections. In my mind the desired end result would be for these to be contained in the data models, but perhaps in the beginning they exist in our controllers just as we saw during classwork this week? Or maybe your group feels it would be best to have the connections processed in their own class from the offset? Just another thing to think about in planning.
+
+To start with you probably don't really need a database anyway, use fake data or a class full of fake data to start with, like Alison did with her Android project. And then when you're sure all your methods that link that class with the rest of your project are working as desired, then remove the fake data in the class and make a connection to a database within that class to then store and access the data more permanently.
+
+Good luck!
 
 [Return to top](#top)
