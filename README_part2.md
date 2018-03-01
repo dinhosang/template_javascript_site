@@ -147,7 +147,7 @@ __Aside: Wireframe Contracts__
   * The controller writer knows that if they create an instance of Person to interact with the person table in the database that there will exist at the very least the attribute .bucketList which will give the controller the array of country names it needs to pass to the viewModel, and on the CREATE route it knows that the instance of the Person class it has just invoked will have a method for adding that new country name to the database for that particular person.
   * And the individual writing the Person class knows that whatever else they write in their class (which the other parts of the project don't care about), they should have those two features, that return and accept the data types detailed in the wireframe contract, and should achieve the stated goals.
 
-  * If your group handles the project via mob programming this ability to more safely modularise the building of the site amongst different colleagues will not be as important a feature, but it would probably still be useful to help guild the endeavour.
+  * If your group handles the project via mob programming this ability to more safely modularise the building of the site amongst different colleagues will not be as important a feature, but it would probably still be useful to help guild the endeavour with a user centric mindset as building you code around your wireframes mean you've built your code around your users journey.
 
   * __Aside over__
 

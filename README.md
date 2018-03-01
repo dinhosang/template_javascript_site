@@ -18,9 +18,9 @@
 <a name='file-structure'></a>
 ## Create file structure
 
-In below section any sub points are to signify files/folders created within the above folder.
+In the below section any sub points are to signify files/folders created within the above folder.
 
-At this point the goal is to only create **empty** folders and files. The structure of a project.
+At this point the goal is to only create **empty** folders and **empty** files. The structure of a project.
 
 A 'feature' of GitHub is that it does not push empty folders.
 
@@ -76,7 +76,7 @@ git commit -m "first commit"
 
 There are a few modules we need to bring in, and a few files we'll need to modify. Some will be dev-tool side only.
 
-We should already have nodemon installed globally so no need to worry there. Some will also require us to edit the package.json file scripts a little.
+We should already have nodemon installed globally so no need to worry there. Some modules we'll install will also require us to edit the package.json file scripts a little.
 
 * __npm__ (to be able to access the below modules)
 * __express__ (for our server and controllers)
@@ -170,8 +170,8 @@ npm install --save-dev mocha
     ```sh
     npm install --save-dev webpack
     ```
-    * There is another file to install, otherwise it will fail when you try to use npm run webpack (we'll get to that below). It does give you the command to use to install the cli dependency when it fails the run.
-    * this appears to be some kind of additional dependency that is missed out of the main webpack. Feel free to wait on installing this until after we try to run webpack below, just incase the command or the situation has changed.
+    * There is another file to install, otherwise it will fail when you try to use npm run webpack (we'll get to that below). It does give you the command to use to install what it calls 'cli' when it fails the run.
+    * This cli appears to be some kind of additional dependency that is missed out of the main webpack. Feel free to wait on installing this until after we try to run webpack below just incase the command, or the situation, has changed.
     * For reference, the command you will be asked to use should take the form (at least at this date: 28/02/2018):
     ```sh
     npm install webpack-cli -D
@@ -413,7 +413,7 @@ __Aside: Wireframe Contracts__
   * The controller writer knows that if they create an instance of Person to interact with the person table in the database that there will exist at the very least the attribute .bucketList which will give the controller the array of country names it needs to pass to the viewModel, and on the CREATE route it knows that the instance of the Person class it has just invoked will have a method for adding that new country name to the database for that particular person.
   * And the individual writing the Person class knows that whatever else they write in their class (which the other parts of the project don't care about), they should have those two features, that return and accept the data types detailed in the wireframe contract, and should achieve the stated goals.
 
-  * If your group handles the project via mob programming this ability to more safely modularise the building of the site amongst different colleagues will not be as important a feature, but it would probably still be useful to help guild the endeavour.
+  * If your group handles the project via mob programming this ability to more safely modularise the building of the site amongst different colleagues will not be as important a feature, but it would probably still be useful to help guild the endeavour with a user centric mindset as building you code around your wireframes mean you've built your code around your users journey.
 
   * __Aside over__
 
