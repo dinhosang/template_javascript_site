@@ -150,7 +150,8 @@ npm install --save-dev mocha
         path: __dirname + "/build"
       },
 
-      devtool: 'source-map'
+      devtool: 'source-map',
+      mode: 'development'
     }
 
     module.exports = config;
@@ -162,6 +163,7 @@ npm install --save-dev mocha
     * the output is stating what it should call the file it creates after bundling all our code files up (we use bundle.js) with the path being where we should place that file (in our case in our build folder alongside our html)
       * as a follow on to above, in a future step we will need to script in our bundle.js file into our html file, in the head section. We'll reach that point later in this guide.
     * the devtool is asking what we should name the file it makes that is a slightly more readable to human eyes version of the bundle.js, this is stored in the same directory as the bundle.js (the build folder for us)
+    * the mode part is saying what mode we should run webpack in, with the choice being development or production. This is something available since webpack version 4 so if you're working with an older codebase with older dependencies you may not see this. Check out [this link to a explanation of mode for more information](https://medium.com/webpack/webpack-4-mode-and-optimization-5423a6bc597a)
     * then we export it for use elsewhere (our html file for instance)
 
     __Back to Setup__
