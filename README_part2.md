@@ -54,13 +54,13 @@ So far we have:
   * Starting from the top of our server.js file
   ```js
     const express = require('express')
-    const server  = new express()
+    const server  = express()
   ```
-  * The above code requires in the full express class from the express module
-  * We then create a new instance of that class and assign it the name server, as that is what it is for us.
+  * The above code requires in whatever is contained within the express module.
+  * When then assign the invocation of whatever was in that module to a variable named server, which we call by that name because that is what is is doing for us - acting as our server.
   ```js
     const express = require('express')
-    const server  = new express()
+    const server  = express()
     //new lines
     const parser  = require('body-parser')
 
@@ -70,7 +70,7 @@ So far we have:
   * We require it in and then .use its json method within our server.
   ```js
     const express = require('express')
-    const server  = new express()
+    const server  = express()
     const parser  = require('body-parser')
 
     server.use(parser.json())
@@ -79,7 +79,7 @@ So far we have:
     server.use(parser.urlencoded({extended: true}))
   ```
   * the new lines tells our server that there are files in our build folder that it needs to pay attention to.
-  * As a default part of this feature, it knows to treat any file named index.html as our hompage, and automatically creates a GET route for the 'http://localhost:3000/' url (if that is the port we use), which is why we were were able to see the star wars quotes homepage without having explicitly written a .get('/', callback) route for the homepage.
+  * As a default part of this feature, it knows to treat any file named index.html as our homepage, and automatically creates a GET route for the 'http://localhost:3000/' url (if that is the port we use), which is why we were were able to see the star wars quotes homepage without having explicitly written a .get('/', callback) route for the homepage.
   * We will still need to write such an index for any other routes, such as for our apis (which are any routes which get information from our database).
   * The parser also comes with a method to handle url encoding (the characters used in urls sometimes like %20 which represents a space in a url). Not exactly sure what it does, just that we may need it! It is likely in classnotes from this earlier this week (week 13). We need to use this in our server just as we have the parser.json and the express.static(build path)
 
@@ -133,7 +133,7 @@ So far we have:
 __Aside: Wireframe Contracts__
   * One last slightly lengthy aside for this section, you may have seen the right side of the diagram above shows a contracts list. These are contracts between the various parts of the project that have been determined naturally and declared and refined explicitly by the group during planing, and through the drawing of the wireframe.
 
-  * _(if you wish you can skip to the_ [next section](#basic-app-js)_, though the following paragraphs detail something that I feel is quite useful!)_
+  * _(if you wish you can skip to the_ [next section](#basic-app-js)_, though the following paragraphs detail something that I feel is quite useful! Of course you could skip whatever you want at any time anyway.)_
 
   * For instance, at the top of the actual wireframe diagram we can see the goal of this view which is to display a person's bucket list of countries to visit
   * Through this we know that we likely need a person model, and this model should hold a collection of countries. After discussion with the group it is decided that this should be on a this.bucketList attribute, which should return an array of country names - of strings.
