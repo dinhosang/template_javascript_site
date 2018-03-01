@@ -1,3 +1,16 @@
+<a name='top'></a>
+## Contents
+  * [Recap of Part 1](#recap1)
+  * [Post Structure Build - First Steps](#post-structure-steps)
+    * [Basic Server.js](#server-js)
+    * [Index.html](#index-html)
+    * [Aside - Wireframe Contracts](#wireframe-aside)
+    * [Basic App.js](#basic-app-js)
+    * [Empty Route Controllers](#empty-routes)
+    * [Recap of Part 2](#recap2)
+    * [Final thoughts](#conclusion)
+
+<a name='recap1'></a>
 # Recap of Part 1
 
 So far we have:
@@ -13,6 +26,7 @@ So far we have:
   * the above was all performed in the master branch to set it up for developement.
   * any future steps should occur on a feature branch, which has been branched from a develop branch, which was itself branched from master. Remember good git practise with regards to merging!
 
+<a name='post-structure-steps'></a>
 ## Post structure first steps for the project - i.e. good things to mob program
 
 * Hopefully as a group you have built the above file structure together. While you are grouped up, it may also be useful to write a few common files together.
@@ -27,7 +41,11 @@ So far we have:
   * a __basic app.js__ file with just an event of the document loading, and an empty callback.
   * perhaps __controller files with empty paths__ for whatever routes you need for an mvp, just to solidify that everyone is on the same page about what your site is trying to achieve.
 
+  * Don't forget good git practise of creating feature branches when working on the following.
+
+[Return to top](#top)
 ---------------
+<a name='server-js'></a>
 * __server.js__
   * For a basic server.js we need to be able to access our server, and see our html and bundled code!
   * It's as good a place to start as any as without a connection to a server the site will never load when someone tries to access the url.
@@ -43,30 +61,50 @@ So far we have:
   ```js
     const express = require('express')
     const server  = new express()
+    //new lines
+    const parser  = require('body-parser')
 
-    // new
-    server.use(express.static(`${__dirname}/build`))
+    server.use(parser.json())
   ```
-  * the new lines tells our server that there are files in our build folder that it needs to pay attention to.
-  * As a default part of this feature, it knows to treat any file named index.html as our hompage, and automatically creates a GET route for the 'http://localhost:3000/' url, which is why we were were able to see the star wars quotes homepage without having explicitly written a .get('/', callback) route for the homepage.
-  * We will still need to write such an index for any other routes, such as for our apis (which are any routes which get information from our database).
+  * The parser allows us to read from the body of a request without having to parse it first, it does that for us
+  * We require it in and then .use its json method within our server.
   ```js
     const express = require('express')
     const server  = new express()
+    const parser  = require('body-parser')
 
+    server.use(parser.json())
+    // new
     server.use(express.static(`${__dirname}/build`))
+    server.use(parser.urlencoded({extended: true}))
+  ```
+  * the new lines tells our server that there are files in our build folder that it needs to pay attention to.
+  * As a default part of this feature, it knows to treat any file named index.html as our hompage, and automatically creates a GET route for the 'http://localhost:3000/' url (if that is the port we use), which is why we were were able to see the star wars quotes homepage without having explicitly written a .get('/', callback) route for the homepage.
+  * We will still need to write such an index for any other routes, such as for our apis (which are any routes which get information from our database).
+  * The parser also comes with a method to handle url encoding (the characters used in urls sometimes like %20 which represents a space in a url). Not exactly sure what it does, just that we may need it! It is likely in classnotes from this earlier this week (week 13). We need to use this in our server just as we have the parser.json and the express.static(build path)
+
+  ```js
+    const express = require('express')
+    const parser  = require('body-parser')
+    const server  = express()
+
+    server.use(parser.json())
+    server.use(express.static(`${__dirname}/build`))
+    server.use(parser.urlencoded({extended: true}))
 
     //new
     server.listen(3000, function() {
-      console.log('Server listening on port 3000');
+      console.log('Server listening on port 3000')
   })
   ```
-  * You may change the port number to something other than 3000, but that's the default we have been using.
+  * For the new lines above you may change the port number to something other than 3000, but that's the default we have been using.
   * There is no need to have a callback or to log anything within it. It could be useful though to see that all is working as expected.
 
   * Now we have a working server, one that will refresh automatically when we change our server side code, thanks to nodemon (a module we installed globally in class).
 
+[Return to top](#top)
   ------------
+  <a name="index-html"></a>
   __index.html__
   * Now would be a good time to setup the basic structure of the site, by hardcoding the html elements that likely won't change very often if at all. This allows them to be targeted (and represented by) the viewModels.
   * If we take a look at the example wireframe posted above, and here again:
@@ -89,9 +127,13 @@ So far we have:
   * If your group feels it is useful to break out the styling into separate files to handle different tasks, a styles folder could be made in the build and the css files moved into there, just be sure to include the relative path in the href for each one.
   * Your static elements will be determined by your project, so further examples will not be detailed here as this repo is to exist as a template for a potential site.
 
-  * __One last slightly lengthy aside for this section__, you may have seen the right side of the diagram above shows a contracts list. These are contracts between the various parts of the project that have been determined naturally and declared and refined explicitly by the group during planing, and through the drawing of the wireframe.
+[Return to top](#top)
+---------------
+<a name='wireframe-aside'></a>
+__Aside: Wireframe Contracts__
+  * One last slightly lengthy aside for this section, you may have seen the right side of the diagram above shows a contracts list. These are contracts between the various parts of the project that have been determined naturally and declared and refined explicitly by the group during planing, and through the drawing of the wireframe.
 
-  * _(if you wish you can skip to the next bolded text, though the following paragraphs detail something that I feel is quite useful!)_
+  * _(if you wish you can skip to the_ [next section](#basic-app-js)_, though the following paragraphs detail something that I feel is quite useful!)_
 
   * For instance, at the top of the actual wireframe diagram we can see the goal of this view which is to display a person's bucket list of countries to visit
   * Through this we know that we likely need a person model, and this model should hold a collection of countries. After discussion with the group it is decided that this should be on a this.bucketList attribute, which should return an array of country names - of strings.
@@ -108,7 +150,10 @@ So far we have:
   * If your group handles the project via mob programming this ability to more safely modularise the building of the site amongst different colleagues will not be as important a feature, but it would probably still be useful to help guild the endeavour.
 
   * __Aside over__
+
+  [Return to top](#top)
 ---------------
+<a name='basic-app-js'></a>
 __basic app.js__
 
   * We have setup a basic server, and linked it to our build files, after which we setup our html file to show its static elements (with ids) and linked in our styles in addition to our earlier script in of our bundle.js
@@ -129,7 +174,7 @@ __basic app.js__
 
     // new
     const main = function() {
-      console.log('site loaded');
+      console.log('site loaded')
     }
 
     // already written
@@ -137,3 +182,88 @@ __basic app.js__
   ```
   * Now we have our app.js set up which will manage all the events we want to allow our users to perform. In the earlier wireframe diagram that meant being able to hit the homepage and see a list of countries in the bucket list, and being able to click a submit button to add a country.
   * Those functionalities could be performed by the viewModels in some fashion, perhaps being given a callback when they are constructed which is then able to send a request when the appropriate event occurs (like the button click)
+  * Those request will hit the /api/whatever routes detailed in the controllers, the controllers would then interact with our data models which in turn could interact with our database and return the information the controller sought, which the controller then sends pack on the response to the appropriate source whether that be the viewModel or the app.js depending of your project structure.
+
+[Return to top](#top)
+---------------------
+<a name="empty-routes"></a>
+__empty controller routes__
+* It should not be necessary if full wireframe contracts (or some other similar understanding) were made, but it could be useful to create the expected controllers for the MVP and empty paths for them just to make sure everyone is aware of what is going on, maybe with comments for what is expected to return in terms of status and body, and what is expected to be sent in the original request as well.
+```js
+  const express   = require('express')
+  const parser    = require('body-parser')
+  const whateverRouter = new express.Router()
+  const Whatever  = require('../dataModels/whatever.js')
+
+  // may not require the below parser.json line because the server combines this within itself in our server.js file, and the server uses this controller so perhaps all is well.
+  // In which case we won't need the require('body-parser') in this file either, as it's handled in the server.js.
+  // of course we need to make sure that we have our server.js use this controller and assign it the appropriate path
+  whateverRouter.use(parser.json());
+
+  // INDEX route - (R)
+  whateverRouter.get('/', function(req, res) {
+    // create instance of whatever
+
+    // use the method detailed in contract to get require information
+
+    // maybe have a check to see if the data model reports an error connecting to the database
+
+    // manipulate data as needed
+
+    // add data to body of res, log to console and send res if needed (not required if using res.json(data) as that sends it automatically)
+  })
+  // ...
+
+  module.exports = whateverRouter;
+```
+  * If following the above idea of detailing out empty routes that you know the project will need for mvp (which may not be all of them), then be sure to add this controller to the server in server.js (as mentioned in the comments regarding the parser.json)
+  * In server.js
+  ```js
+    // already written
+    const express = require('express')
+    const parser  = require('body-parser')
+    const server  = express()
+
+    server.use(parser.json());
+    server.use(express.static(`${__dirname}/build`))
+    server.use(parser.urlencoded({extended: true}));
+    // new
+    server.use('api/whatever', require(`${__dirname}/src/controllers/whateverApiController.js`))
+
+    // already written
+    server.listen(3000, function() {
+      console.log('Server listening on port 3000');
+    })
+  ```
+  * The new lines makes our server aware of our controller (which has only empty paths currently but is still a controller)
+  * If we have many controllers we could choose to create a central controller in the controllers folder that is then used by the server, to aid in readability and maintainability of the server.js file.
+
+[Return to top](#top)
+-----------
+<a name='recap2'></a>
+__RECAP Part 2__
+
+We have now:
+  * built a basic server.js file that can listen to a port and receive visits to the home route
+  * built a basic html template with our static elements that our viewModels will hook onto to and represent
+  * built a basic app.js file that is now ready to await user events and invoke our viewModels
+  * maybe - some controller files with empty routes, but with comments about purpose and response, which have been linked to the server in our server.js file.
+
+[Return to top](#top)
+-------------------
+<a name="conclusion"></a>
+## What's Next?
+
+That's up to the group, hopefully planning and design have been performed, and there is an idea of how you all will be working towards the MVP.
+
+As part of the planning the group has hopefully also considered what contracts need to exist between the various parts of your project so that if you work alone or in pairs that the parts you build have the correct hooks and expect the correct data so that they can integrate more comfortably together. Even if working through mob programming, it would be good to have a clear view about what each part is expecting, and expected to do, before starting to program.
+
+The inner workings don't need to be figured out, just the expected input and output, that is the basic requirement for ensuring you can fit your pieces together.
+
+Don't forget good git practise!
+
+Of course everything detailed here is just one opinion. It's one I've started to form form conversation with and listening to fellow students and our instructors, but an opinion is all it is. I simply hope this is of some use to people, even if just as a stepping stone to something more fully fleshed out.
+
+If it does lead that way please let the rest of us know your findings too!
+
+[Return to top](#top)
