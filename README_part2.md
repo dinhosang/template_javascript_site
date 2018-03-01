@@ -266,4 +266,8 @@ Of course everything detailed here is just one opinion. It's one I've started to
 
 If it does lead that way please let the rest of us know your findings too!
 
+Oh, and there is one folder we haven't discussed at all, which is the helper folder. Use this if you find yourself using similar functionality across different classes or files. You could refactor the code to instead of repeating yourself in each file, simply make a helper class which will do the heavy lifting for you in each of those files. It's more a folder for future optimisations than a tool to use in active development. At least for the time frame we're on.
+
+We also didn't touch on testing, but that's because we built no models as part of this basic setup. Don't forget to test them with mocha too! The green ticks are too much fun to ignore.
+
 [Return to top](#top)
