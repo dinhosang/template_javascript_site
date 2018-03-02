@@ -120,10 +120,7 @@ So far we have:
     * form (#add-country-form) is also static. It contains some static elements: a select with a starting option (likely reading something like 'please select a country name'), and a button. One of its child elements contains dynamic elements as well. As such the form is also a viewModel - named FormView as it will be populated using js.
       * the select dropdown (#country-dropdown) contains dynamic elements
       * the button (#submit-country-button) is static, but as an aside its purpose in this project would be achieved via js, not via the default html.
-  * With that knowledge we can build our basic html structure. The styling of it will be left as a separate task in our css. Speaking of we should link that css file in our head element:
-  ```html
-    <link rel="stylesheet" href="styles.css">
-  ```
+  * With that knowledge we can build our basic html structure. The styling of it will be left as a separate task in our css.
   * If your group feels it is useful to break out the styling into separate files to handle different tasks, a styles folder could be made in the build and the css files moved into there, just be sure to include the relative path in the href for each one.
   * Your static elements will be determined by your project, so further examples will not be detailed here as this repo is to exist as a template for a potential site.
 
